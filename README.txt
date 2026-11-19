@@ -1,1 +1,1 @@
-setup so i can ssh into my rpi 4b to a nix shell containing python3 and deno then run dspy.rlm with an api served from my nanopi m6 running llama-swap managed llama.cpp containers and dockcheck.sh on dietpi
+setup so i can ssh into my rpi 4b to a nix shell containing python3 and deno then run dspy.rlm with an api served from my nanopi m6 running llama-swap managed llama.cpp containers and dockcheck on dietpi
