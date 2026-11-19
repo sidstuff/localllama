@@ -1,0 +1,17 @@
+services:
+  phi:
+    image: ghcr.io/ggml-org/llama.cpp:server-cuda
+    environment:
+      - LLAMA_ARG_N_GPU_LAYERS=999
+      - LLAMA_ARG_MODEL=/models/phi-4.Q4_K_M.gguf
+    ports:
+      - "8000:8080"
+    volumes:
+      - ./models:/models
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
