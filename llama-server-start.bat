@@ -1,0 +1,42 @@
+C:\Users\Owner\Desktop\LocalLLaMa\beellama.cpp\build-sm120\bin\Release\llama-server.exe ^
+--model C:\Users\Owner\Desktop\LocalLLaMa\huihui-ai\Huihui-Qwen3.8-27B-abliterated-GSQ-RCO-IQ3_XXS.gguf ^
+--model-draft C:\Users\Owner\Desktop\LocalLLaMa\HermiHg\Qwen3.8-27B-DFlash2-Q2_K_S-MIX.gguf ^
+--mmproj C:\Users\Owner\Desktop\LocalLLaMa\HermiHg\mmproj-Qwen3.8-27B-Q5_K-MIX.gguf ^
+--chat-template-file C:\Users\Owner\Desktop\LocalLLaMa\peculiar-ragdoll\chat_template.jinja ^
+--prio 2 ^
+--prio-batch 2 ^
+--batch-size 512 ^
+--ubatch-size 128 ^
+--swa-full ^
+--flash-attn on ^
+--kv-tail-tokens 1024 ^
+--cache-type-k kvarn5 ^
+--cache-type-v kvarn4 ^
+--load-mode mlock ^
+--gpu-layers all ^
+--fit ^
+--split-mode none ^
+--temp 1.0 ^
+--top-k 20 ^
+--top-p 0.95 ^
+--min-p 0.0 ^
+--repeat-penalty 1.0 ^
+--presence-penalty 0.0 ^
+--spec-type draft-dflash,ngram-map-k4v ^
+--spec-draft-prio 2 ^
+--spec-draft-prio-batch 2 ^
+--spec-draft-n-max 5 ^
+--spec-draft-type-k q4_0 ^
+--spec-draft-type-v q4_0 ^
+--spec-draft-ngl all ^
+--kv-unified ^
+--cache-ram 0 ^
+--no-cache-idle-slots ^
+--parallel 1 ^
+--no-mmproj-offload ^
+--image-min-tokens 1024 ^
+--no-webui ^
+--api-key foo ^
+--reasoning on ^
+--reasoning-format deepseek ^
+--reasoning-effort xhigh
