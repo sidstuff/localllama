@@ -10,6 +10,8 @@ wget https://raw.githubusercontent.com/mag37/dockcheck/main/dockcheck.sh
 install -m 755 regctl dockcheck.sh ~/.local/bin
 printf "AutoMode=true\nAutoPrune=true\nAutoSelfUpdate=true\nOnlySpecific=true\n" > ~/.config/dockcheck.config
 cat > ~/.config/llama-swap.yaml << 'EOF'
+healthCheckTimeout: 300
+sendLoadingState: true
 models:
   qwen4:
     cmd: docker compose up
