@@ -1,5 +1,6 @@
 set -e
 cat > /var/lib/dietpi/dietpi-autostart/custom.sh << 'EOF'
+mount --mkdir /dev/mmcblk0p2 /mnt/models
 for url in https://github.com/regclient/regclient/releases/latest/download/regctl-linux-arm64 \
 https://raw.githubusercontent.com/mag37/dockcheck/HEAD/dockcheck.sh; do \
 wget -N --no-if-modified-since -P ~/.local/bin $url; done
@@ -26,4 +27,16 @@ models:
     cmd: docker compose up
   update:
     cmd: sh /var/lib/dietpi/dietpi-autostart/custom.sh
+EOF
+cat > ~/compose.yaml << 'EOF'
+services:
+  qwen4:
+    image: ghcr.io/anbeeld/beellama.cpp:server-cpu
+    environment:
+      - LLAMA_ARG_N_GPU_LAYERS=999
+      - LLAMA_ARG_MODEL=/models/phi-4.Q4_K_M.gguf
+    ports:
+      - "9931:9931"
+    volumes:
+      - /mnt/models:/models
 EOF
