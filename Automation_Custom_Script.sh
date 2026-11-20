@@ -31,6 +31,8 @@ EOF
 cat > ~/compose.yaml << 'EOF'
 services:
   qwen4:
+    volumes: /mnt/models:/models
+    ports: 9931:9931
     image: ghcr.io/anbeeld/beellama.cpp:server-cpu
     environment:
       - LLAMA_ARG_N_MODEL C:\Users\Owner\Desktop\LocalLLaMa\huihui-ai\Huihui-Qwen3.8-27B-abliterated-GSQ-RCO-IQ3_XXS.gguf
@@ -74,8 +76,4 @@ services:
       - LLAMA_ARG_N_REASONING on
       - LLAMA_ARG_N_REASONING_FORMAT deepseek
       - LLAMA_ARG_N_REASONING_EFFORT xhigh
-    ports:
-      - "9931:9931"
-    volumes:
-      - /mnt/models:/models
 EOF
