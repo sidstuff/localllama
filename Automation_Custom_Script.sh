@@ -1,6 +1,6 @@
 set -e
 cat > /var/lib/dietpi/dietpi-autostart/custom.sh << 'EOF'
-sudo mount --mkdir /dev/mmcblk0p2 /mnt/models
+sudo mount --mkdir /dev/mmcblk0p2 /mnt/gguf
 if pgrep llama-swap && brew update && brew outdated && brew upgrade && pkill llama-swap || ! pgrep llama-swap
 then docker stop $(docker ps -q); llama-swap --config ~/.config/llama-swap.yaml & brew cleanup --prune=all; fi
 for url in https://github.com/regclient/regclient/releases/latest/download/regctl-linux-arm64 \
@@ -24,12 +24,10 @@ models:
   update:
     cmd: sh /var/lib/dietpi/dietpi-autostart/custom.sh
   qwen4:
-    cmd: >
-      docker run -v /mnt/models:/models:ro -p 9931:9931 ghcr.io/anbeeld/beellama.cpp:server
-      --cpu-range 4-7 --cpu-strict 1 --prio 2 --prio-batch 2 --spec-draft-prio 2 --spec-draft-prio-batch 2
+    cmd: docker run --rm -v /mnt/gguf:/gguf:ro -p 9931:9931 ghcr.io/anbeeld/beellama.cpp:server -Cr 4-7 --cpu-strict 1
     env:
-      - LLAMA_ARG_MODEL=/models/Qwen4-Flash-UD-IQ1_S.gguf
-      - LLAMA_ARG_SPEC_DRAFT_MODEL=/models/Qwen4-Flash-DFlash2-Q4_K_M.gguf
+      - LLAMA_ARG_MODEL=/gguf/Qwen4-Flash-UD-IQ1_S.gguf
+      - LLAMA_ARG_SPEC_DRAFT_MODEL=/gguf/Qwen4-Flash-DFlash2-Q4_K_M.gguf
       - LLAMA_ARG_THREADS=4
       - LLAMA_ARG_BATCH=512
       - LLAMA_ARG_UBATCH=128
