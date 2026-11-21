@@ -64,7 +64,7 @@ services:
       - LLAMA_ARG_CACHE_RAM=0
       - LLAMA_ARG_CACHE_IDLE_SLOTS=0
       - LLAMA_ARG_N_PARALLEL=1
-      - LLAMA_ARG_NO_WEBUI
+      - LLAMA_ARG_UI=0
       - LLAMA_ARG_REASONING=on
       - LLAMA_ARG_REASONING_EFFORT=xhigh
       - LLAMA_ARG_THINK=deepseek
