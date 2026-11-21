@@ -4,7 +4,7 @@ mount --mkdir /dev/mmcblk0p2 /mnt/models
 for url in https://github.com/regclient/regclient/releases/latest/download/regctl-linux-arm64 \
 https://raw.githubusercontent.com/mag37/dockcheck/HEAD/dockcheck.sh; do \
 wget -N --no-if-modified-since -P ~/.local/bin $url; done
-dockcheck -aFp
+dockcheck.sh -aFp
 brew upgrade
 brew cleanup --prune=all
 pkill llama-swap
