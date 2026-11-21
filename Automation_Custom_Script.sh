@@ -1,6 +1,6 @@
 set -e
 cat > /var/lib/dietpi/dietpi-autostart/custom.sh << 'EOF'
-mount --mkdir /dev/mmcblk0p2 /mnt/models
+sudo mount --mkdir /dev/mmcblk0p2 /mnt/models
 for url in https://github.com/regclient/regclient/releases/latest/download/regctl-linux-arm64 \
 https://raw.githubusercontent.com/mag37/dockcheck/HEAD/dockcheck.sh; do \
 wget -N --no-if-modified-since -P ~/.local/bin $url; done
