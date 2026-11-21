@@ -24,7 +24,7 @@ models:
   update:
     cmd: sh /var/lib/dietpi/dietpi-autostart/custom.sh
   qwen4:
-    cmd: docker run --rm -v /mnt/gguf:/gguf:ro -p 9931:9931 ghcr.io/anbeeld/beellama.cpp:server -Cr 4-7 --cpu-strict 1
+    cmd: docker run --rm -v /mnt/gguf:/gguf:ro -p ${PORT}:9931 ghcr.io/anbeeld/beellama.cpp:server -Cr 4-7 --cpu-strict 1
     env:
       - LLAMA_ARG_MODEL=/gguf/Qwen4-Flash-UD-IQ1_S.gguf
       - LLAMA_ARG_SPEC_DRAFT_MODEL=/gguf/Qwen4-Flash-DFlash2-Q4_K_M.gguf
