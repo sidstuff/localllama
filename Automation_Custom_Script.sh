@@ -33,7 +33,8 @@ services:
   qwen4:
     volumes: /mnt/models:/models:ro
     ports: 9931:9931
-    image: ghcr.io/anbeeld/beellama.cpp:server-cpu --cpu-range 4-7 --cpu-strict 1 --prio 2 --prio-batch 2 --spec-drft-prio 2 --spec-draft-prio-batch 2
+    image: ghcr.io/anbeeld/beellama.cpp:server-cpu
+    command: --cpu-range 4-7 --cpu-strict 1 --prio 2 --prio-batch 2 --spec-drft-prio 2 --spec-draft-prio-batch 2
     environment:
       - LLAMA_ARG_MODEL=/models/Qwen4-Flash-UD-IQ1_S.gguf
       - LLAMA_ARG_SPEC_DRAFT_MODEL=/models/Qwen4-Flash-DFlash2-Q4_K_M.gguf
