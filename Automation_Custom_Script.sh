@@ -20,7 +20,7 @@ brew install llama-swap
 cd ~/.local/bin
 ln -s regctl-linux-arm64 regctl
 cat > ~/.config/llama-swap.yaml << 'EOF'
-healthCheckTimeout: 300
+healthCheckTimeout: 600
 sendLoadingState: true
 models:
   qwen4:
