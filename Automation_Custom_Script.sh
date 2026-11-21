@@ -2,7 +2,7 @@ set -e
 cat > /var/lib/dietpi/dietpi-autostart/custom.sh << 'EOF'
 sudo mount --mkdir /dev/mmcblk0p2 /mnt/models
 if ! pgrep llama-swap || brew update && brew outdated && brew upgrade && pkill llama-swap
-then llama-swap --config ~/.config/llama-swap.yaml --watch-config & brew cleanup --prune=all; fi
+then docker stop $(docker ps -q); llama-swap --config ~/.config/llama-swap.yaml --watch-config & brew cleanup --prune=all; fi
 for url in https://github.com/regclient/regclient/releases/latest/download/regctl-linux-arm64 \
 https://raw.githubusercontent.com/mag37/dockcheck/HEAD/dockcheck.sh
 do wget -N --no-if-modified-since -P ~/.local/bin $url; done
