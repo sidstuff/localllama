@@ -21,19 +21,14 @@ cat > ~/.config/llama-swap.yaml << 'EOF'
 healthCheckTimeout: 600
 sendLoadingState: true
 models:
-  qwen4:
-    cmd: docker compose up
   update:
     cmd: sh /var/lib/dietpi/dietpi-autostart/custom.sh
-EOF
-cat > ~/compose.yaml << 'EOF'
-services:
   qwen4:
     volumes: /mnt/models:/models:ro
     ports: 9931:9931
-    image: ghcr.io/anbeeld/beellama.cpp:server
-    command: --cpu-range 4-7 --cpu-strict 1 --prio 2 --prio-batch 2 --spec-drft-prio 2 --spec-draft-prio-batch 2
-    environment:
+    cmd: docker run ghcr.io/anbeeld/beellama.cpp:server
+           --cpu-range 4-7 --cpu-strict 1 --prio 2 --prio-batch 2 --spec-drft-prio 2 --spec-draft-prio-batch 2
+    env:
       - LLAMA_ARG_MODEL=/models/Qwen4-Flash-UD-IQ1_S.gguf
       - LLAMA_ARG_SPEC_DRAFT_MODEL=/models/Qwen4-Flash-DFlash2-Q4_K_M.gguf
       - LLAMA_ARG_THREADS=4
