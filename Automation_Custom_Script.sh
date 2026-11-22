@@ -36,7 +36,6 @@ models:
       - LLAMA_ARG_UBATCH=128
       - LLAMA_ARG_SWA_FULL=true
       - LLAMA_ARG_LOAD_MODE=mlock
-      - LLAMA_ARG_SPLIT_MODE=none
       - LLAMA_ARG_TEMPERATURE=1.0
       - LLAMA_ARG_TOP_K=0
       - LLAMA_ARG_TOP_P=1.0
