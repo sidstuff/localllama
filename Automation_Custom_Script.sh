@@ -23,40 +23,29 @@ sendLoadingState: true
 models:
   update:
     cmd: sh /var/lib/dietpi/dietpi-autostart/custom.sh
-  qwen4:
-    cmd: docker run --rm -v /mnt/gguf:/gguf:ro -p ${PORT}:9931 ghcr.io/anbeeld/beellama.cpp:server -Cr 4-7 --cpu-strict 1
+  inkling:
+    cmd: >
+      docker run --rm -v /mnt/gguf:/gguf:ro -p ${PORT}:9931 ghcr.io/ggml-org/beellama.cpp:server
+      --lora /gguf/Inkling-2-Mini-Unbound-LoRA-r16.gguf -Cr 4-7 --cpu-strict 1
     env:
-      - LLAMA_ARG_MODEL=/gguf/Qwen4-Flash-UD-IQ1_S.gguf
-      - LLAMA_ARG_SPEC_DRAFT_MODEL=/gguf/Qwen4-Flash-DFlash2-Q4_K_M.gguf
+      - LLAMA_ARG_MODEL=/gguf/Inkling-2-Mini-UD-IQ4_XS.gguf
+      - LLAMA_ARG_SPEC_DRAFT_MODEL=/gguf/dspark-Inkling-2-Mini-Q8_0.gguf
+      - LLAMA_ARG_MMPROJ=/gguf/mmproj-Inkling-2-Mini-F16.gguf
       - LLAMA_ARG_THREADS=4
       - LLAMA_ARG_BATCH=512
       - LLAMA_ARG_UBATCH=128
       - LLAMA_ARG_SWA_FULL=true
-      - LLAMA_ARG_FLASH_ATTN=on
-      - LLAMA_ARG_KV_TAIL_TOKENS=1024
-      - LLAMA_ARG_KV_TAIL_TYPE=q8_0
-      - LLAMA_ARG_CACHE_TYPE_K=kvarn5
-      - LLAMA_ARG_CACHE_TYPE_V=kvarn4
       - LLAMA_ARG_LOAD_MODE=mlock
-      - LLAMA_ARG_N_GPU_LAYERS=0
       - LLAMA_ARG_SPLIT_MODE=none
       - LLAMA_ARG_TEMPERATURE=1.0
-      - LLAMA_ARG_TOP_K=20
-      - LLAMA_ARG_TOP_P=0.95
+      - LLAMA_ARG_TOP_K=0
+      - LLAMA_ARG_TOP_P=1.0
       - LLAMA_ARG_MIN_P=0.0
-      - LLAMA_ARG_REPEAT_PENALTY=1.0
-      - LLAMA_ARG_PRESENCE_PENALTY=0.0
-      - LLAMA_ARG_SPEC_TYPE=draft-dflash,ngram-map-k4v
-      - LLAMA_ARG_SPEC_DRAFT_N_MAX=5
-      - LLAMA_ARG_SPEC_DRAFT_TYPE_K=q4_0
-      - LLAMA_ARG_SPEC_DRAFT_TYPE_V=q4_0
-      - LLAMA_ARG_N_GPU_LAYERS_DRAFT=0
+      - LLAMA_ARG_SPEC_TYPE=draft-dspark,ngram-map-k4v
+      - LLAMA_ARG_SPEC_DRAFT_N_MAX=3
       - LLAMA_ARG_KV_UNIFIED=true
       - LLAMA_ARG_CACHE_RAM=0
       - LLAMA_ARG_CACHE_IDLE_SLOTS=0
       - LLAMA_ARG_N_PARALLEL=1
       - LLAMA_ARG_UI=0
-      - LLAMA_ARG_REASONING=on
-      - LLAMA_ARG_REASONING_EFFORT=xhigh
-      - LLAMA_ARG_THINK=deepseek
 EOF
