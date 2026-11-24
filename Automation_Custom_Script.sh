@@ -34,6 +34,8 @@ models:
       - LLAMA_ARG_THREADS=4
       - LLAMA_ARG_BATCH=512
       - LLAMA_ARG_UBATCH=128
+      - LLAMA_ARG_CACHE_TYPE_K=q8_0
+      - LLAMA_ARG_CACHE_TYPE_V=q8_0
       - LLAMA_ARG_SWA_FULL=true
       - LLAMA_ARG_LOAD_MODE=mlock
       - LLAMA_ARG_TEMPERATURE=1.0
@@ -41,6 +43,8 @@ models:
       - LLAMA_ARG_TOP_P=1.0
       - LLAMA_ARG_MIN_P=0.0
       - LLAMA_ARG_SPEC_TYPE=draft-dspark,ngram-map-k4v
+      - LLAMA_ARG_SPEC_DRAFT_CACHE_TYPE_K=q8_0
+      - LLAMA_ARG_SPEC_DRAFT_CACHE_TYPE_V=q8_0
       - LLAMA_ARG_KV_UNIFIED=true
       - LLAMA_ARG_CACHE_RAM=0
       - LLAMA_ARG_CACHE_IDLE_SLOTS=0
