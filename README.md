@@ -13,4 +13,6 @@ wget -qO- https://raw.githubusercontent.com/sidstuff/localllama/HEAD/dietpi.over
 do sed -i "s|^#\\?${line%%=*}=.*|$line|" /mnt/dietpisetup/dietpi.txt; done
 umount /dev/sda2
 echo "start=64G" | sfdisk --append /dev/sda
+mkfs.f2fs -s 2 -i -O extra_attr,inode_checksum,sb_checksum /dev/sda3
+mount --mkdir /dev/sda3 /mnt/gguf
 ```
