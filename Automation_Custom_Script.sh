@@ -26,7 +26,7 @@ models:
   inkling:
     cmd: >
       docker run --rm -v /mnt/gguf:/gguf:ro -p ${PORT}:9931 ghcr.io/ggml-org/beellama.cpp:server
-      --lora /gguf/Inkling-2-Mini-Unbound-v2-LoRA-r16.gguf -Cr 4-7 --cpu-strict 1
+      --lora /gguf/Inkling-2-Mini-Unbound-v2.1-LoRA-r16.gguf -Cr 4-7 --cpu-strict 1
     env:
       - LLAMA_ARG_MODEL=/gguf/Inkling-2-Mini-UD-IQ4_XS.gguf
       - LLAMA_ARG_SPEC_DRAFT_MODEL=/gguf/dspark-Inkling-2-Mini-Q8_0.gguf
