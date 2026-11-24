@@ -41,7 +41,6 @@ models:
       - LLAMA_ARG_TOP_P=1.0
       - LLAMA_ARG_MIN_P=0.0
       - LLAMA_ARG_SPEC_TYPE=draft-dspark,ngram-map-k4v
-      - LLAMA_ARG_SPEC_DRAFT_N_MAX=3
       - LLAMA_ARG_KV_UNIFIED=true
       - LLAMA_ARG_CACHE_RAM=0
       - LLAMA_ARG_CACHE_IDLE_SLOTS=0
