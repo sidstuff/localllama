@@ -11,4 +11,6 @@ dd bs=4M if=DietPi_NanoPiM6-ARMv8-Trixie.img of=/dev/sda conv=fsync oflag=direct
 mount --mkdir /dev/sda2 /mnt/dietpisetup
 wget -qO- https://raw.githubusercontent.com/sidstuff/localllama/HEAD/dietpi.override | while IFS= read -r line
 do sed -i "s|^#\\?${line%%=*}=.*|$line|" /mnt/dietpisetup/dietpi.txt; done
+umount /dev/sda2
+echo "start=64G" | sfdisk --append /dev/sda
 ```
