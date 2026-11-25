@@ -1,6 +1,6 @@
 set -e
 cat > /var/lib/dietpi/dietpi-autostart/custom.sh << 'EOF'
-sudo mount --mkdir /dev/mmcblk0p2 /mnt/gguf
+sudo mount --mkdir -o ro /dev/mmcblk0p2 /mnt/gguf
 if pgrep llama-swap && brew update && brew outdated && brew upgrade && pkill llama-swap || ! pgrep llama-swap
 then docker stop $(docker ps -q); llama-swap --config ~/.config/llama-swap.yaml & brew cleanup --prune=all; fi
 for url in https://github.com/regclient/regclient/releases/latest/download/regctl-linux-arm64 \
