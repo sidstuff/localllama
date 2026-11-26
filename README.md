@@ -17,3 +17,11 @@ mkfs.f2fs -s 2 -i -O extra_attr,inode_checksum,sb_checksum /dev/sda3
 mount --mkdir /dev/sda3 /mnt/gguf
 umount /dev/sda3
 ```
+
+## RPi 4B
+
+```sh
+git clone https://github.com/nvmd/nixos-raspberrypi
+cd nixos-raspberrypi
+nix --accept-flake-config build .#installerImages.rpi4
+```
